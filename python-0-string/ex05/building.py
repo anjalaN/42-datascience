@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#/usr/bin/env python3
 import sys
 import string
 
@@ -21,6 +21,7 @@ def main():
         digit_count = 0
         space_count = 0
         
+        
         # Iterate over each character in the input string
         for char in user_input:
             if char.isupper():
@@ -33,13 +34,17 @@ def main():
                 digit_count += 1
             elif char.isspace():
                 space_count += 1
-        
+        #calculatte the total count number of charactors
+        totalt_characters = len(user_input)
+
         # Display the counts for each category
-        print(f"Upper-case characters: {upper_case_count}")
-        print(f"Lower-case characters: {lower_case_count}")
-        print(f"Punctuation characters: {punctuation_count}")
-        print(f"Digits: {digit_count}")
-        print(f"Spaces: {space_count}")
+        print(f"The  text contains {totalt_characters} characters:")
+        print(f"{upper_case_count} Upper-case characters: ")
+        print(f"{lower_case_count} Lower-case characters: ")
+        print(f"{punctuation_count} Punctuation characters: ")
+        print(f"{space_count} Spaces: ")
+        print(f"{digit_count} Digits: ")
+        
 
     except AssertionError as e:
         # Handle the case where more than one argument is provided
