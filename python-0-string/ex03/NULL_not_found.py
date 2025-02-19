@@ -1,23 +1,30 @@
 #!/usr/bin/env python3
-def NULL_not_found(object: any) -> int:
-    try:
-        # Print the type of the object
-        print(f"Object type: {type(object)}")
+import math
 
-        # Check for null-like values
-        if object is None:  # None type
-            return 0
-        elif isinstance(object, float) and object != object:  # NaN check
-            return 0
-        elif object == 0:  # Zero (int or float)
-            return 0
-        elif object == '':  # Empty string
-            return 0
-        elif object is False:  # Boolean False
-            return 0
-
-        # If the object doesn't match any "null" type
+def NULL_not_found(object: any) -> any:
+    #handling None explicitly
+    if object is None:
+        print(f"Nothing: None {type(object)}")
+        return 0
+    #handle Nan (not a number) explicitly using math.isnan()
+    elif isinstance(object, float) and math.isnan(object):
+        print(f"Cheese: nan {type(object)}")
+        return 0
+    
+    #Handle false explicitly
+    elif object is False:
+        print(f"Fake: False {type(object)}")
+        return 0
+    #handle zero explicitly
+    elif object == 0:
+        print(f"Zero: 0 {type(object)}")
+        return 0
+    #handle empty
+    elif object == '':
+        print(f"Empty: {type(object)}")
+        return 0
+   
+    else:
+        print("Type not Found$")
         return 1
-    except Exception as e:
-        print(f"Error: {e}")
-        return 1
+      
