@@ -75,3 +75,21 @@ def find_ft_type(object: any) -> any:
     else:
         print("Type not found$")
         return 1
+--------------------------------------------------------------
+#!/usr/bin/env python3
+
+from find_ft_type import find_ft_type   # Uncomment if you have a module named find_ft_type
+
+ft_list = ["Hello", "tata!"]
+ft_tuple = ("Hello", "toto!")
+ft_set = {"Hello", "tutu!"}
+ft_dict = {"Hello": "titi!"}
+
+(find_ft_type(ft_list))
+(find_ft_type(ft_tuple))
+(find_ft_type(ft_set))
+(find_ft_type(ft_dict))
+(find_ft_type("Brain"))
+(find_ft_type("Toto"))
+print(find_ft_type(10))
+
