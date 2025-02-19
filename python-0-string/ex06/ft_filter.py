@@ -1,3 +1,4 @@
+  
 #!/usr/bin/env python3
 import sys
 
@@ -25,7 +26,7 @@ if __name__ == "__main__":
     
     # Print the filtered and sorted words
     print(filtered_words)
----------------------------------------------------------------------------------
+-----------------------------------------------------------
 #!/usr/bin/env python3
 import sys
 
@@ -43,4 +44,5 @@ def is_odd(num):
 numbers = [1, 2, 3, 4, 5, 6]
 result = ft_filter(is_odd, numbers)
 print(list(result))  
+
 
