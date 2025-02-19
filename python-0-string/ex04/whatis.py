@@ -1,26 +1,33 @@
 #!/usr/bin/env python3
 import sys
 
+
 def main():
-    # Check if exactly one argument is provided
-    if len(sys.argv) != 2:
-        raise AssertionError("Only one argument is allowed.")
-
-    # Extract the argument
-    argument = sys.argv[1]
-
     try:
-        # Try to convert the argument to an integer
-        number = int(argument)
-    except ValueError:
-        # Raise an error if the argument is not an integer
-        raise AssertionError("Argument must be an integer.")
+        # Vérifier le nombre d'arguments
+        if len(sys.argv) > 2:
+            raise AssertionError("AssertionError: more than one argument is provided")
+        if len(sys.argv) < 2:
+            return  # Aucun argument, terminer le programme
 
-    # Check if the number is odd or even
-    if number % 2 == 0:
-        print("Even")
-    else:
-        print("Odd")
+        # Extraire l'argument
+        argument = sys.argv[1]
+
+        try:
+            # Convertir l'argument en entier
+            number = int(argument)
+        except ValueError:
+            raise AssertionError("AssertionError: argument is not an integer")
+
+        # Vérifier si le nombre est pair ou impair
+        if number % 2 == 0:
+            print("I'm Even.")
+        else:
+            print("I'm Odd.")
+
+    except AssertionError as e:
+        # Afficher uniquement le message d'erreur
+        print(e)
 
 if __name__ == "__main__":
     main()
