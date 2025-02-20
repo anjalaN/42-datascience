@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import sys
 
 
@@ -6,7 +7,9 @@ def main():
     try:
         # Vérifier le nombre d'arguments
         if len(sys.argv) > 2:
-            raise AssertionError("AssertionError: more than one argument is provided")
+            raise AssertionError(
+                "AssertionError: more than one argument is provided"
+            )
         if len(sys.argv) < 2:
             return  # Aucun argument, terminer le programme
 
@@ -28,6 +31,7 @@ def main():
     except AssertionError as e:
         # Afficher uniquement le message d'erreur
         print(e)
+
 
 if __name__ == "__main__":
     main()
