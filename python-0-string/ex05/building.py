@@ -1,54 +1,71 @@
-#/usr/bin/env python3
+#!/usr/bin/env python3
+
 import sys
 import string
 
+
+def count_characters(input_str):
+    """
+    Count the number of characters in each category in the input string.
+
+    :param input_str: The input string to analyze.
+    :return: A dictionary containing the counts for each category.
+    """
+    counts = {
+        "upper_case": 0,
+        "lower_case": 0,
+        "punctuation": 0,
+        "digit": 0,
+        "space": 0
+    }
+    for char in input_str:
+        if char.isupper():
+            counts["upper_case"] += 1
+        elif char.islower():
+            counts["lower_case"] += 1
+        elif char in string.punctuation:
+            counts["punctuation"] += 1
+        elif char.isdigit():
+            counts["digit"] += 1
+        elif char.isspace():
+            counts["space"] += 1
+
+    return counts
+
+
+def display_counts(input_str):
+    """
+    Display the counts for each character category in the input string.
+
+    :param input_str: The input string to analyze.
+    """
+    counts = count_characters(input_str)
+    total_characters = len(input_str)
+
+    print(f"The text contains {total_characters} characters:")
+    print(f"{counts['upper_case']} Upper-case characters")
+    print(f"{counts['lower_case']} Lower-case characters")
+    print(f"{counts['punctuation']} Punctuation characters")
+    print(f"{counts['space']} Spaces")
+    print(f"{counts['digit']} Digits")
+
+
 def main():
+    """
+    Main function to handle user input and display character counts.
+    """
     try:
-        # Check if the number of arguments is valid
         if len(sys.argv) > 2:
             raise AssertionError("more than one argument is provided")
-        
-        # If no arguments are provided, prompt the user for input
         if len(sys.argv) < 2:
             user_input = input("Please enter a string: ")
         else:
             user_input = sys.argv[1]
-        
-        # Initialize counters for each category
-        upper_case_count = 0
-        lower_case_count = 0
-        punctuation_count = 0
-        digit_count = 0
-        space_count = 0
-        
-        
-        # Iterate over each character in the input string
-        for char in user_input:
-            if char.isupper():
-                upper_case_count += 1
-            elif char.islower():
-                lower_case_count += 1
-            elif char in string.punctuation:
-                punctuation_count += 1
-            elif char.isdigit():
-                digit_count += 1
-            elif char.isspace():
-                space_count += 1
-        #calculatte the total count number of charactors
-        totalt_characters = len(user_input)
-
-        # Display the counts for each category
-        print(f"The  text contains {totalt_characters} characters:")
-        print(f"{upper_case_count} Upper-case characters: ")
-        print(f"{lower_case_count} Lower-case characters: ")
-        print(f"{punctuation_count} Punctuation characters: ")
-        print(f"{space_count} Spaces: ")
-        print(f"{digit_count} Digits: ")
-        
+        display_counts(user_input)
 
     except AssertionError as e:
-        # Handle the case where more than one argument is provided
         print(e)
+
 
 if __name__ == "__main__":
     main()
