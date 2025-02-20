@@ -38,7 +38,7 @@ MORSE_CODE_DICT = {
     "7": "--...",
     "8": "---..",
     "9": "----.",
-    "/": "-..-."
+    " ": "/"
 
 }
 
@@ -46,20 +46,21 @@ MORSE_CODE_DICT = {
 # Function to convert text to Morse code
 def text_to_morse(text):
     morse_code = []
-    for char in text.upper():  # Convert text to uppercase for matching Morse codes
+    for char in text.upper():  # Convert text to uppercase for matching Morse
         if char in MORSE_CODE_DICT:
-            morse_code.append(MORSE_CODE_DICT[char])  # Add Morse code for valid characters
+            morse_code.append(MORSE_CODE_DICT[char])
         else:
-            raise AssertionError(f"the arguments are bad: invalid character '{char}'")  # Invalid character
+            raise AssertionError(
+                f"the arguments are bad: invalid character '{char}'"
+            )  # Invalid character
     return " ".join(morse_code)
+
 
 # Main function to handle arguments
 def main():
     if len(sys.argv) != 2:  # Check if there is exactly 1 argument
         raise AssertionError("the arguments are bad")
-    
     text = sys.argv[1]  # Get the input text from the command line
-    
     # Convert text to Morse code
     try:
         morse = text_to_morse(text)
@@ -67,6 +68,7 @@ def main():
         print(f"Morse Code: {morse}")
     except AssertionError as e:
         print(e)
+
 
 if __name__ == "__main__":
     main()
