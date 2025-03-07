@@ -1,36 +1,29 @@
-#!/usr/bin/env python3
+#!/user/bin/env python3
 import pandas as pd
+import matplotlib.pyplot as plt
 
-def dataset_dimensions(file_path):
+def load_dataset(file_path):
     """
-    reads dataset from the given file pathe, writes its dimensions to a file, and return the dimensions.
+    Read dataset form the given file path, and read returns the dataFrame,
 
     Parameters:
-    file_path(str): The path to the dataset file.
+    file_path (str): the path to the dataset file.
 
-    Returns:
-    tuple: The dimensions of the dataset (rows, coloumns). 
+    Returns: The dataset as a pandas DataFrame. Returns None if an error occurs. 
     """
     try:
         #Read the dataset
         df = pd.read_csv(file_path)
-
-        #Get the dimension of the dataset
-        dimensions = df.shape
-
-        #wrute the dimension to a file
-        with open("dataset_dimensions.txt", "w") as file:
-            file.write(f"Dimensions of the dataset: {dimensions[0]} rows, {dimensions[1]} columns\n")
-            return dimensions, df
+        return df
     except Exception as e:
-            print(f"An error occurred: {e}")
-            return None
-
+        print(f"an error occured: {e}")
+        return None
+    
 if __name__ == "__main__":
+    #Example usage
     file_path = "life_expectancy_years.csv"
-    dimensions, df = dataset_dimensions(file_path)
-    if dimensions:
-        print(f"The dimensions of the dataset are: {dimensions}")
+    df = load_dataset(file_path)
+    if df is not None:
+        print(df.head())
     else:
-         print("Fail to  read the dataset")
-     
+        print("Failed to load the dataset.")
