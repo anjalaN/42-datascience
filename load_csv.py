@@ -1,27 +1,27 @@
-#!/user/bin/env python3
+#!/usr/bin/env python3
 import pandas as pd
-import matplotlib.pyplot as plt
 
 def load_dataset(file_path):
     """
-    Read dataset form the given file path, and read returns the dataFrame,
+    Reads the dataset from the given file path and returns it as a pandas DataFrame.
 
     Parameters:
-    file_path (str): the path to the dataset file.
+    file_path (str): The path to the dataset file.
 
-    Returns: The dataset as a pandas DataFrame. Returns None if an error occurs. 
+    Returns:
+    pd.DataFrame: The dataset as a pandas DataFrame. Returns None if an error occurs.
     """
     try:
-        #Read the dataset
+        # Read the dataset
         df = pd.read_csv(file_path)
         return df
     except Exception as e:
-        print(f"an error occured: {e}")
+        print(f"An error occurred: {e}")
         return None
-    
+
 if __name__ == "__main__":
-    #Example usage
-    file_path = "life_expectancy_years.csv"
+    # Example usage
+    file_path = "population_total.csv"
     df = load_dataset(file_path)
     if df is not None:
         print(df.head())
