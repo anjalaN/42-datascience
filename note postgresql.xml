@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<indexing>
+ <paragraph index="9" node_type="writer">Datascience-0 </paragraph>
+ <paragraph index="11" node_type="writer">ex00 create database and docker composer </paragraph>
+ <paragraph index="12" node_type="writer"> first going to the folder ex and connect with terminal</paragraph>
+ <paragraph index="14" node_type="writer">1️⃣ Install PostgreSQL with terminal</paragraph>
+ <paragraph index="16" node_type="writer">sudo apt update</paragraph>
+ <paragraph index="17" node_type="writer">sudo apt install postgresql postgresql-contrib</paragraph>
+ <paragraph index="19" node_type="writer">Verify PostgreSQL Installation</paragraph>
+ <paragraph index="20" node_type="writer">psql –version</paragraph>
+ <paragraph index="22" node_type="writer">2️⃣ Start the PostgreSQL Server - Option 1: Using PostgreSQL Locally</paragraph>
+ <paragraph index="24" node_type="writer">sudo systemctl start postgresql  # Linux</paragraph>
+ <paragraph index="25" node_type="writer">brew services start postgresql  # macOS</paragraph>
+ <paragraph index="27" node_type="writer">To check if it's running:</paragraph>
+ <paragraph index="29" node_type="writer">sudo systemctl status postgresql</paragraph>
+ <paragraph index="31" node_type="writer">Log in to PostgreSQL using the credentials provided:</paragraph>
+ <paragraph index="33" node_type="writer">psql -U your_login -d piscineds -h localhost -W</paragraph>
+ <paragraph index="34" node_type="writer">Enter &quot;mysecretpassword&quot; when prompted.</paragraph>
+ <paragraph index="36" node_type="writer">3️⃣ Connect to PostgreSQL (As your user)</paragraph>
+ <paragraph index="39" node_type="writer">sudo -u postgres psql</paragraph>
+ <paragraph index="41" node_type="writer">coming sql terminal piscineds=# </paragraph>
+ <paragraph index="43" node_type="writer">with sql terminal create database </paragraph>
+ <paragraph index="45" node_type="writer">CREATE DATABASE piscineds;</paragraph>
+ <paragraph index="47" node_type="writer">create user with my login</paragraph>
+ <paragraph index="49" node_type="writer">CREATE USER arajapak WITH PASSWORD ‘mysecretpassword’</paragraph>
+ <paragraph index="51" node_type="writer">Grant privillege</paragraph>
+ <paragraph index="54" node_type="writer">GRANT ALL PRIVILEGES ON DATABASE piscineds TO arajapak;</paragraph>
+ <paragraph index="57" node_type="writer">connect to postgresql</paragraph>
+ <paragraph index="59" node_type="writer">psql _u arajapak -d piscineds -h localhost -W</paragraph>
+ <paragraph index="61" node_type="writer">aftre coming sql terminal and for quit \q</paragraph>
+ <paragraph index="63" node_type="writer">4️⃣ Switch to PostgreSQL superuser (postgres)</paragraph>
+ <paragraph index="66" node_type="writer">Option 2: Using Docker Compose(optional)</paragraph>
+ <paragraph index="67" node_type="writer">install docker and docker composer  with terminal</paragraph>
+ <paragraph index="69" node_type="writer">sudo apt install docker docker-compose</paragraph>
+ <paragraph index="71" node_type="writer">verification installation ok or not</paragraph>
+ <paragraph index="73" node_type="writer">docker –version</paragraph>
+ <paragraph index="74" node_type="writer">docker-compose --version</paragraph>
+ <paragraph index="76" node_type="writer">Navigation to you working directory cd  ~/datasciens-0/ex00</paragraph>
+ <paragraph index="77" node_type="writer">after inside folder </paragraph>
+ <paragraph index="78" node_type="writer">Create a docker-compose.yml file with the following contents:</paragraph>
+ <paragraph index="79" node_type="writer">version: '3.1'</paragraph>
+ <paragraph index="81" node_type="writer">services:</paragraph>
+ <paragraph index="82" node_type="writer">  db:</paragraph>
+ <paragraph index="83" node_type="writer">    image: postgres</paragraph>
+ <paragraph index="84" node_type="writer">    restart: always</paragraph>
+ <paragraph index="85" node_type="writer">    environment:</paragraph>
+ <paragraph index="86" node_type="writer">      POSTGRES_USER: your_login</paragraph>
+ <paragraph index="87" node_type="writer">      POSTGRES_PASSWORD: mysecretpassword</paragraph>
+ <paragraph index="88" node_type="writer">      POSTGRES_DB: piscineds</paragraph>
+ <paragraph index="89" node_type="writer">    ports:</paragraph>
+ <paragraph index="90" node_type="writer">- &quot;5432:5432&quot;</paragraph>
+ <paragraph index="92" node_type="writer">for exit ctrl.x and enter</paragraph>
+ <paragraph index="94" node_type="writer">Run the following command to start PostgreSQL inside Docker:</paragraph>
+ <paragraph index="96" node_type="writer">docker-compose up -d</paragraph>
+ <paragraph index="98" node_type="writer">checking running </paragraph>
+ <paragraph index="99" node_type="writer">docker ps</paragraph>
+ <paragraph index="101" node_type="writer">* si problem  solution with terminal run docker root</paragraph>
+ <paragraph index="102" node_type="writer">sudo docker-compose up -d</paragraph>
+ <paragraph index="104" node_type="writer">add yourself the docker group replace your name with your actual login </paragraph>
+ <paragraph index="106" node_type="writer">sudo username -aG docker arajapak</paragraph>
+ <paragraph index="108" node_type="writer">reset you vm </paragraph>
+ <paragraph index="110" node_type="writer">Once the container is running, connect to the database with:</paragraph>
+ <paragraph index="112" node_type="writer">psql -U your_login -d piscineds -h localhost -W</paragraph>
+ <paragraph index="114" node_type="writer">psql -U arajapak -d piscineds -h localhost -W</paragraph>
+ <paragraph index="116" node_type="writer">Verifying the Connection</paragraph>
+ <paragraph index="117" node_type="writer">you can check if the database is running with:</paragraph>
+ <paragraph index="119" node_type="writer">\l  # Lists available databases</paragraph>
+ <paragraph index="120" node_type="writer">\dt # Lists tables inside the current database</paragraph>
+ <paragraph index="124" node_type="writer">si problem port - solution </paragraph>
+ <paragraph index="125" node_type="writer">changement with yml file </paragraph>
+ <paragraph index="126" node_type="writer">ports:</paragraph>
+ <paragraph index="127" node_type="writer">  - &quot;5433:5432&quot;</paragraph>
+ <paragraph index="128" node_type="writer">docker-compose up -d</paragraph>
+ <paragraph index="129" node_type="writer">psql -U arajapak -d piscineds -h localhost -p 5433 -W</paragraph>
+ <paragraph index="131" node_type="writer">database exit chek</paragraph>
+ <paragraph index="132" node_type="writer">SELECT current_database();</paragraph>
+ <paragraph index="133" node_type="writer">user exit</paragraph>
+ <paragraph index="134" node_type="writer">SELECT current_user;</paragraph>
+ <paragraph index="138" node_type="writer">****</paragraph>
+ <paragraph index="139" node_type="writer">if piscineds already exists (\l confirms it).</paragraph>
+ <paragraph index="141" node_type="writer">sudo -u postgres psql -c &quot;\l&quot;</paragraph>
+</indexing>
